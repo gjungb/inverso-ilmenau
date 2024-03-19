@@ -1,0 +1,25 @@
+<p>led-list works!</p>
+
+<table>
+  <tbody>
+  <tr>
+    @for (thing of leds; track thing.index) {
+    <td>
+      <pi-led [led]="thing" (ledColorChange)="handleColorChange($event)"></pi-led>
+    </td>
+    }
+  </tr>
+  </tbody>
+</table>
+
+@if (false) {
+<table>
+  <tbody>
+  <tr>
+    <td *ngFor="let thing of leds">
+      <pi-led [led]="thing"></pi-led>
+    </td>
+  </tr>
+  </tbody>
+</table>
+}
