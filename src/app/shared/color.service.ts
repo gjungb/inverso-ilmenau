@@ -1,12 +1,11 @@
-import {inject, Injectable} from '@angular/core';
-import {Leds} from "../model/led";
-import {HttpClient} from "@angular/common/http";
+import { inject, Injectable } from '@angular/core';
+import { Leds } from '../model/led';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ColorService {
-
   httpClient = inject(HttpClient);
 
   /**
@@ -16,12 +15,12 @@ export class ColorService {
     return [
       {
         index: 0,
-        color: 'lightpink'
+        color: 'lightpink',
       },
       {
         index: 1,
-        color: 'lightblue'
-      }
+        color: 'lightblue',
+      },
     ];
   }
 }

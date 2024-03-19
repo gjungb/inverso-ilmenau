@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import type {Led} from "../model/led";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import type { Led } from '../model/led';
 
 /**
  * Stateless
@@ -13,14 +13,14 @@ import type {Led} from "../model/led";
   standalone: true,
   imports: [],
   templateUrl: './led.component.html',
-  styleUrl: './led.component.scss'
+  styleUrl: './led.component.scss',
 })
 export class LedComponent {
   /**
    * The Led to display in the component
    */
   @Input({
-    required: true
+    required: true,
   })
   led!: Led;
 
@@ -41,5 +41,4 @@ export class LedComponent {
     // internal state
     // this.led.color = 'red';
   }
-
 }

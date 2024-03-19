@@ -8,10 +8,9 @@ describe('LedListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LedListComponent]
-    })
-    .compileComponents();
-    
+      imports: [LedListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(LedListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
