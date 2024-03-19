@@ -15,7 +15,6 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "sort-imports": "error",
         "@angular-eslint/directive-selector": [
           "error",
           {
