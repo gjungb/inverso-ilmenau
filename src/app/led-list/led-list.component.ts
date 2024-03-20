@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { Leds } from '../model/led';
+import type { Leds } from '../model/led';
 import { LedComponent } from '../led/led.component';
-import { NgForOf } from '@angular/common';
+import { AsyncPipe, NgForOf } from '@angular/common';
 import { ColorService } from '../shared/color.service';
+import { RouterLink } from '@angular/router';
 
 /**
  * Stateful
@@ -10,14 +11,34 @@ import { ColorService } from '../shared/color.service';
 @Component({
   selector: 'pi-led-list',
   standalone: true,
-  imports: [LedComponent, NgForOf],
+  imports: [LedComponent, NgForOf, AsyncPipe, RouterLink],
   templateUrl: './led-list.component.html',
   styleUrl: './led-list.component.scss',
 })
 export class LedListComponent {
-  colorService = inject(ColorService);
+  /**
+   *
+   * @private
+   */
+  #colorService = inject(ColorService);
 
-  leds: Leds = this.colorService.readLeds();
+  /**
+   * The Observable stream of leds
+   */
+  leds$ = this.#colorService.readLeds();
+
+  /**
+   * The static array of leds
+   */
+  leds: Leds = this.#colorService.readLedsSync();
+
+  /**
+   *
+   * @param color
+   */
+  handleColorsChange(color: string): void {
+    this.leds$ = this.#colorService.updateLeds(color);
+  }
 
   /**
    *

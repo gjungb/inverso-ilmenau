@@ -3,8 +3,9 @@
 <table>
   <tbody>
     <tr>
-      @for (thing of leds; track thing.index) {
+      @for (thing of leds$ | async; track thing.index) {
         <td>
+          <a [routerLink]="[thing.index]">Details for {{ thing.index + 1 }}</a>
           <pi-led
             [led]="thing"
             (ledColorChange)="handleColorChange($event)"

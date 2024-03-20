@@ -1,0 +1,8 @@
+<p>color-form works!</p>
+
+<form [formGroup]="form" (ngSubmit)="updateColor()">
+  <input type="text" formControlName="color">
+  <button type="submit" [disabled]="form.invalid">Send</button>
+</form>
+
+<pre><code>{{ changes() | json }}</code></pre>

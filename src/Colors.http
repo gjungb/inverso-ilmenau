@@ -1,0 +1,8 @@
+###
+
+# curl -X GET "https://347eb1836965ec040f474bd7f78d4730.balena-devices.com/api/colors" -H  "accept: */*"
+GET https://347eb1836965ec040f474bd7f78d4730.balena-devices.com/api/colors
+accept: */*
+
+###
+

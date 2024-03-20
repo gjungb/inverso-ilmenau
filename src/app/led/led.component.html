@@ -7,3 +7,9 @@
   (click)="handleSelectBox($event)"
   [style.background-color]="led.color"
 ></div>
+
+<button (click)="handleFormatChange()">Toggle Format</button>
+
+<p>
+  {{ led.color | piColor: colorFormat() }}
+</p>

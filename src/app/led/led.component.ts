@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import type { Led } from '../model/led';
+import { ColorPipe } from '../shared/color.pipe';
 
 /**
  * Stateless
@@ -11,7 +12,7 @@ import type { Led } from '../model/led';
 @Component({
   selector: 'pi-led',
   standalone: true,
-  imports: [],
+  imports: [ColorPipe],
   templateUrl: './led.component.html',
   styleUrl: './led.component.scss',
 })
@@ -32,6 +33,11 @@ export class LedComponent {
 
   /**
    *
+   */
+  colorFormat = signal('rgb');
+
+  /**
+   *
    * @param ev
    */
   handleSelectBox(ev: MouseEvent): void {
@@ -40,5 +46,9 @@ export class LedComponent {
     this.ledColorChange.emit(this.led.index);
     // internal state
     // this.led.color = 'red';
+  }
+
+  handleFormatChange() {
+    this.colorFormat.update((format) => (format === 'rgb' ? 'hex' : 'rgb'));
   }
 }
